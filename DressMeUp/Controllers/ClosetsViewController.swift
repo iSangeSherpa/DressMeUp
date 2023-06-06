@@ -8,22 +8,25 @@
 import UIKit
 
 class ClosetsViewController: UIViewController {
+    
+    var topBar = getTopBar(labelText: "Closets")
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupUI() {
+        view.backgroundColor = UIColor.mainBackgroundColor
+        
+        view.addSubview(topBar)
+        
+        topBar.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.width.equalToSuperview()
+            make.height.equalTo(100)
+        }
+        
     }
-    */
-
+    
 }

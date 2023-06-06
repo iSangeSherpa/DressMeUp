@@ -13,9 +13,9 @@ func customButton(
     title: String,
     titleColor: UIColor,
     titleFont: UIFont? = UIFont(name: "OpenSans-Bold", size: 13)
-) -> UIButton {
+    ) -> UIButton {
     
-    var button = UIButton()
+    let button = UIButton()
     button.setTitle(title, for: .normal)
     button.titleLabel?.font = titleFont
     button.setTitleColor(titleColor, for: .normal)

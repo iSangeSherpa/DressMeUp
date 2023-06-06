@@ -92,18 +92,20 @@ class ProfileViewController: UIViewController {
             make.left.right.equalToSuperview()
         }
         scrollableContainer.snp.makeConstraints { make in
-            make.left.top.right.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.left.right.equalToSuperview()
         }
         
         topHalfView.snp.makeConstraints { make in
             make.top.equalTo(scrollableContainer.snp.top)
             make.left.equalTo(scrollableContainer.snp.left)
             make.right.equalTo(scrollableContainer.snp.right)
-            make.height.equalTo(330)
+            make.height.equalTo(280)
         }
         imageContainer.snp.makeConstraints { make in
             make.width.height.equalTo(150)
-            make.center.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-20)
+            make.centerX.equalToSuperview()
         }
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(imageContainer.snp.bottom).offset(20)
@@ -133,7 +135,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func logoutButtonTapped(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Are you sure ?", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Are you sure you want to logout ?", message: "", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
             print("Logged out!")

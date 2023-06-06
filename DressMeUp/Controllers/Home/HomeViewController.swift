@@ -3,7 +3,8 @@ import SnapKit
 
 class HomeViewController: UIViewController {
 
-    var imageArray = ["img1", "img2", "img3", "img4"]
+    var photoExpandedController = PhotoExpandedViewController()
+    var imageArray = ["img1", "img2", "img3", "img4", "img3", "img4", "img3", "img4", "img3", "img4"]
     
     var flowlayout: UICollectionViewFlowLayout = {
         var flowlayout = UICollectionViewFlowLayout()
@@ -15,19 +16,18 @@ class HomeViewController: UIViewController {
     
     lazy var collectionView : UICollectionView = {
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowlayout)
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
         collectionView.backgroundColor = UIColor.mainBackgroundColor
         return collectionView
     }()
-        
-    
-    
+            
     // MARK: Labels
     lazy var inspirationsLabel : UILabel = {
         var inspirationsLabel = UILabel()
         inspirationsLabel.text = "Inspirations"
-        inspirationsLabel.font = UIFont(name: "Lato-Black", size: 30)
+        inspirationsLabel.font = UIFont(name: "Lato-Black", size: 28)
         inspirationsLabel.textColor = UIColor.primaryLabelColor
         return inspirationsLabel
     }()
@@ -86,10 +86,11 @@ class HomeViewController: UIViewController {
         }
         topBarStack.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20)
+            make.centerY.equalToSuperview()
             make.right.bottom.equalToSuperview().offset(-20)
         }
         cameraButton.snp.makeConstraints { make in
-            make.width.height.equalTo(50)
+            make.width.height.equalTo(40)
         }
         
         collectionView.snp.makeConstraints { make in
@@ -121,7 +122,7 @@ class HomeViewController: UIViewController {
             self.present(vc, animated: true)
         })
 
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default) { _ in
             alert.dismiss(animated: true)
         })
         
@@ -153,11 +154,33 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let image = UIImage(named: "\(imageArray[indexPath.row])") else { return }
+        photoExpandedController.photoImageView.image = image
+        self.navigationController?.pushViewController(photoExpandedController, animated: true)
+    }
+    
 }
 
 
 extension HomeViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        let photoController = PhotoExpandedViewController()
+        
+        if let imageURL = info[.imageURL] as? URL {
+            let imageString = imageURL.absoluteString
+            UserDefaults.standard.set(imageURL, forKey: "image")
+//            print(UserDefaults.standard.string(forKey: "image"))
+            
+            if let imageData = try? Data(contentsOf: imageURL) {
+                print("Inside----")
+                print(imageData)
+                photoController.photoImageView.image = UIImage(data: imageData)
+            }
+        }
+        
+    }
     
     
 }

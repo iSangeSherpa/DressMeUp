@@ -14,10 +14,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupUI()
+    }
+    
+    private func setupUI() {
+        backgroundColor = .red
         
-        setupTapGesture()
-        
-        backgroundColor = .none
         addSubview(imageView)
         
         imageView.snp.makeConstraints { make in
@@ -28,15 +30,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     
-    
-    
-    private func setupTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
-        contentView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc private func cellTapped(_ gestureRecognizer: UITapGestureRecognizer) {
-        HomeViewController().navigationController?.pushViewController(PhotoExpandedViewController(), animated: true)
+    @objc private func cellTapped() {
+        
     }
 }
