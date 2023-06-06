@@ -31,30 +31,43 @@ class ProfileViewController: UIViewController {
     }()
     
     var emailField = getFieldContainer(textLabel: "Email", textLabelValue: "sangesherpa1215@gmail.com")
-    var genderField = getFieldContainer(textLabel: "Gender", textLabelValue: "Male")
     var phoneField = getFieldContainer(textLabel: "Phone", textLabelValue: "98233123231")
-    
+
     var changePasswordField = getFieldContainer(textLabel: "Change Password", textLabelValue: "• • • • • • •")
     var changePasswordArrowButton: UIButton = {
         var btn = UIButton()
         let image = UIImage(systemName: "arrow.right")?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal)
         btn.setBackgroundImage(image, for: .normal)
-        btn.addTarget(self, action: #selector(changePasswordTapped), for: .touchUpInside)
+        btn.addTarget(changePasswordTapped.self, action: #selector(changePasswordTapped), for: .touchUpInside)
         return btn
     }()
-    
+
     lazy var fieldContainer: UIStackView = {
        var fieldContainer = UIStackView()
         fieldContainer.axis = .vertical
-        
+
         fieldContainer.addArrangedSubview(emailField)
-        fieldContainer.addArrangedSubview(genderField)
         fieldContainer.addArrangedSubview(phoneField)
         fieldContainer.addArrangedSubview(changePasswordField)
         return fieldContainer
     }()
     
     var logoutButton = customButton(backgroundColor: UIColor.mainThemeColor, title: "Log Out", titleColor: UIColor.splashLabelColor)
+    lazy var scrollableContainer: UIView = {
+        var view = UIView()
+        view.addSubview(topHalfView)
+        view.addSubview(fieldContainer)
+        view.addSubview(changePasswordArrowButton)
+        view.addSubview(logoutButton)
+        return view
+    }()
+    
+    lazy var mainScrollViewContainer : UIScrollView = {
+        var scrollView = UIScrollView()
+        scrollView.isScrollEnabled = true
+        scrollView.addSubview(scrollableContainer)
+        return scrollView
+    }()
     
     // MARK: Main Calling Method
     override func viewDidLoad() {
@@ -65,13 +78,27 @@ class ProfileViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = UIColor.mainBackgroundColor
         
+        view.addSubview(mainScrollViewContainer)
+        view.addSubview(scrollableContainer)
         view.addSubview(topHalfView)
         view.addSubview(fieldContainer)
         view.addSubview(changePasswordArrowButton)
+        view.addSubview(logoutButton)
+        
+        logoutButton.addTarget(logoutButtonTapped.self, action: #selector(logoutButtonTapped), for: .touchUpInside)
+        
+        mainScrollViewContainer.snp.makeConstraints { make in
+            make.top.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.left.right.equalToSuperview()
+        }
+        scrollableContainer.snp.makeConstraints { make in
+            make.left.top.right.equalToSuperview()
+        }
         
         topHalfView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.left.right.equalToSuperview()
+            make.top.equalTo(scrollableContainer.snp.top)
+            make.left.equalTo(scrollableContainer.snp.left)
+            make.right.equalTo(scrollableContainer.snp.right)
             make.height.equalTo(330)
         }
         imageContainer.snp.makeConstraints { make in
@@ -93,10 +120,28 @@ class ProfileViewController: UIViewController {
             make.right.equalToSuperview().offset(-20)
             make.width.height.equalTo(20)
         }
+        logoutButton.snp.makeConstraints { make in
+            make.top.equalTo(fieldContainer.snp.bottom).offset(20)
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+        }
     }
     
     
     @objc func changePasswordTapped() {
         present(TestViewController(), animated: true)
+    }
+    
+    @objc func logoutButtonTapped(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Are you sure ?", message: "", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
+            print("Logged out!")
+        })
+        
+        alert.addAction(UIAlertAction(title: "No", style: .default) { _ in
+            alert.dismiss(animated: true)
+        })
+        self.present(alert, animated: true, completion: nil)
     }
 }

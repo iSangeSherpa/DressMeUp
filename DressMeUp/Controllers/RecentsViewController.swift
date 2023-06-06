@@ -33,14 +33,6 @@ class RecentsViewController: UIViewController {
         return inspirationsLabel
     }()
     
-    lazy var cameraButton: UIButton = {
-        var cameraButton = UIButton()
-        let image = UIImage(systemName: "camera.circle")?.withTintColor(primaryLabelColor, renderingMode: .alwaysOriginal)
-        
-        cameraButton.setBackgroundImage(image, for: .normal)
-        return cameraButton
-    }()
-    
     lazy var topBarStack : UIStackView = {
         var topBarStack = UIStackView()
         topBarStack.axis = .horizontal
@@ -48,7 +40,6 @@ class RecentsViewController: UIViewController {
         topBarStack.distribution = .fill
         
         topBarStack.addArrangedSubview(inspirationsLabel)
-        topBarStack.addArrangedSubview(cameraButton)
         return topBarStack
     }()
     
@@ -78,9 +69,7 @@ class RecentsViewController: UIViewController {
         
         recentOutfitsContainer.dataSource = self
         recentOutfitsContainer.delegate = self
-        
-        cameraButton.addTarget(self, action: #selector(cameraTapped), for: .touchUpInside)
-        
+                
         // MARK: Constraints
         topBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -91,20 +80,12 @@ class RecentsViewController: UIViewController {
             make.left.equalToSuperview().offset(20)
             make.right.bottom.equalToSuperview().offset(-20)
         }
-        cameraButton.snp.makeConstraints { make in
-            make.width.height.equalTo(50)
-        }
         
         recentOutfitsContainer.snp.makeConstraints { make in
             make.top.equalTo(topBar.snp.bottom).offset(20)
             make.left.equalToSuperview().offset(20)
             make.right.bottom.equalToSuperview().offset(-20)
         }
-    }
-    
-    
-    @objc private func cameraTapped(_ sender: UIImageView) {
-        present(TestViewController(), animated: true)
     }
     
 }

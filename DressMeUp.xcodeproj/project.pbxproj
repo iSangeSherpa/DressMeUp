@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07E3496CF11B2B9ECF00DCC6 /* Pods_DressMeUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CCC18C64624007287B2C0B /* Pods_DressMeUp.framework */; };
+		500581072A2F5D12003BCE7B /* OpenCameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500581062A2F5D12003BCE7B /* OpenCameraButton.swift */; };
 		503834A02A2C99DB00FBEC63 /* OpenSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5038349C2A2C99DB00FBEC63 /* OpenSans-Medium.ttf */; };
 		503834A12A2C99DB00FBEC63 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5038349D2A2C99DB00FBEC63 /* OpenSans-Light.ttf */; };
 		503834A22A2C99DB00FBEC63 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5038349E2A2C99DB00FBEC63 /* OpenSans-Regular.ttf */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		0AB0AC01A5B03E688A5598F9 /* Pods-DressMeUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DressMeUp.debug.xcconfig"; path = "Target Support Files/Pods-DressMeUp/Pods-DressMeUp.debug.xcconfig"; sourceTree = "<group>"; };
+		500581062A2F5D12003BCE7B /* OpenCameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCameraButton.swift; sourceTree = "<group>"; };
 		5038349C2A2C99DB00FBEC63 /* OpenSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Medium.ttf"; sourceTree = "<group>"; };
 		5038349D2A2C99DB00FBEC63 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		5038349E2A2C99DB00FBEC63 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		50D1EF4F2A166AC7008E3DB6 = {
 			isa = PBXGroup;
 			children = (
+				500581062A2F5D12003BCE7B /* OpenCameraButton.swift */,
 				50D1EF5A2A166AC8008E3DB6 /* DressMeUp */,
 				50D1EF592A166AC8008E3DB6 /* Products */,
 				C781E9C50421828BBF873A02 /* Pods */,
@@ -362,6 +365,7 @@
 				50D1EF822A169853008E3DB6 /* ClosetsViewController.swift in Sources */,
 				504FDBD92A28DAED00D275D4 /* TopBarView.swift in Sources */,
 				50A8270D2A26311E004FC5E5 /* TopBar.swift in Sources */,
+				500581072A2F5D12003BCE7B /* OpenCameraButton.swift in Sources */,
 				50D1EF5C2A166AC8008E3DB6 /* AppDelegate.swift in Sources */,
 				5086BE682A2EBEC700275343 /* FieldsContainer.swift in Sources */,
 				50D1EF842A169862008E3DB6 /* RecentsViewController.swift in Sources */,

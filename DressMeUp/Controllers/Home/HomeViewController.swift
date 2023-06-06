@@ -101,11 +101,7 @@ class HomeViewController: UIViewController {
        
     }
     
-    
-    @objc private func cameraTapped(_ sender: UIImageView) {
-        present(TestViewController(), animated: true)
-    }
-    
+
     @objc func cameraTappedAction() {
         let alert = UIAlertController(title: "Add Photo", message: "Please select a method", preferredStyle: .alert)
     
@@ -123,6 +119,10 @@ class HomeViewController: UIViewController {
             vc.delegate = self
             vc.allowsEditing = true
             self.present(vc, animated: true)
+        })
+
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default) { _ in
+            alert.dismiss(animated: true)
         })
         
         self.present(alert, animated: true, completion: nil)
