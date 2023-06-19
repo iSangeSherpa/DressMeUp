@@ -91,11 +91,11 @@ class ProfileViewController: UIViewController {
         logoutButton.addTarget(logoutButtonTapped.self, action: #selector(logoutButtonTapped), for: .touchUpInside)
         
         mainScrollViewContainer.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().offset(20)
+            make.top.bottom.equalToSuperview().offset(50)
             make.left.right.equalToSuperview()
         }
         scrollableContainer.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(50)
             make.left.right.equalToSuperview()
         }
         

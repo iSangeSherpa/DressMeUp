@@ -25,8 +25,8 @@ class SignUpViewController: UIViewController {
         return stack
     }()
     
-    var signUpButton = customButton(title: "Register", titleColor: UIColor.primaryLabelColor)
-    var signInButton = customButton(title: "Sign In Instead", titleColor: UIColor.primaryLabelColor)
+    var signUpButton = customButton(title: "Register", titleColor: UIColor.primaryLabelColor, titleFont: UIFont(name: "OpenSans-Bold", size: 15))
+    var signInButton = customButton(title: "Sign In Instead", titleColor: UIColor.primaryLabelColor, titleFont: UIFont(name: "OpenSans-Bold", size: 15))
     
     @FormMaterialTextField(placeholder: "Name") var name : MaterialComponents.MDCOutlinedTextField
     @FormMaterialTextField(placeholder: "E-mail") var email : MaterialComponents.MDCOutlinedTextField
@@ -64,6 +64,12 @@ class SignUpViewController: UIViewController {
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
         }
+    }
+    
+    // SignIn instead tapped
+    @objc func signInTapped() {
+        let loginVC = LoginViewController()
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
     
     

@@ -29,7 +29,7 @@ class RecentsViewController: UIViewController {
         recentOutfitsContainer.delegate = self
                 
         topBar.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(50)
             make.width.equalToSuperview()
             make.height.equalTo(80)
         }

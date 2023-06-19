@@ -80,7 +80,7 @@ class HomeViewController: UIViewController {
         
         // MARK: Constraints
         topBar.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(50)
             make.width.equalToSuperview()
             make.height.equalTo(80)
         }
