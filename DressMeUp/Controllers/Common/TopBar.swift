@@ -4,7 +4,7 @@ import SnapKit
 
 public func getTopBar(
     labelText: String,
-    labelFont: UIFont? = UIFont(name: "Lato-Black", size: 28),
+    labelFont: UIFont? = UIFont(name: "Lato-Black", size: 25),
     labelColor: UIColor = UIColor.primaryLabelColor,
     backgroundColor: UIColor = UIColor.mainThemeColor
     ) -> UIView {

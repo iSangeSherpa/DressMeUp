@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class MainTabbarController: UITabBarController {
     
@@ -8,7 +9,6 @@ class MainTabbarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.backgroundColor = UIColor(red: 254/255, green: 95/255, blue: 85/255, alpha: 1)
 
         let homeVC = UINavigationController(rootViewController: HomeViewController())
         let closetsVC = UINavigationController(rootViewController: ClosetsViewController())
@@ -22,7 +22,7 @@ class MainTabbarController: UITabBarController {
         favouritesVC.tabBarItem.image = UIImage(named: "Favourites")?.withTintColor(primaryLabelColor, renderingMode: .alwaysOriginal)
         profileVC.tabBarItem.image = UIImage(named: "Profile")?.withTintColor(primaryLabelColor, renderingMode: .alwaysOriginal)
         
-        
+        self.tabBar.backgroundColor = UIColor(red: 254/255, green: 95/255, blue: 85/255, alpha: 1)
         setViewControllers([homeVC, closetsVC, recentsVC, favouritesVC, profileVC], animated: true)
     }
 }

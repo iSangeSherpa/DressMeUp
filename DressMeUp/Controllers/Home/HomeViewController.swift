@@ -4,7 +4,7 @@ import SnapKit
 class HomeViewController: UIViewController {
 
     var photoExpandedController = PhotoExpandedViewController()
-    var imageArray = ["img1", "img2", "img3", "img4", "img3", "img4", "img3", "img4", "img3", "img4"]
+    var imageArray = ["img1", "img2", "img3", "img4", "img5", "img1", "img2", "img3", "img4", "img5"]
     
     var flowlayout: UICollectionViewFlowLayout = {
         var flowlayout = UICollectionViewFlowLayout()
@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     lazy var inspirationsLabel : UILabel = {
         var inspirationsLabel = UILabel()
         inspirationsLabel.text = "Inspirations"
-        inspirationsLabel.font = UIFont(name: "Lato-Black", size: 28)
+        inspirationsLabel.font = UIFont(name: "Lato-Black", size: 25)
         inspirationsLabel.textColor = UIColor.primaryLabelColor
         return inspirationsLabel
     }()
@@ -80,9 +80,9 @@ class HomeViewController: UIViewController {
         
         // MARK: Constraints
         topBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalToSuperview().offset(20)
             make.width.equalToSuperview()
-            make.height.equalTo(100)
+            make.height.equalTo(80)
         }
         topBarStack.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20)
@@ -94,10 +94,10 @@ class HomeViewController: UIViewController {
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(topBar.snp.bottom).offset(20)
-            make.bottom.equalToSuperview()
-            make.left.equalToSuperview().offset(20)
-            make.right.equalToSuperview().offset(-20)
+            make.top.equalTo(topBar.snp.bottom).offset(10)
+            make.bottom.equalToSuperview().offset(-20)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
         }
        
     }
@@ -141,7 +141,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2-10, height: 200)
+        return CGSize(width: collectionView.frame.width/2-5, height: 200)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -150,6 +150,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         // Configure the cell
         let currentImage = imageArray[indexPath.row]
         cell.imageView.image = UIImage(named: "\(currentImage)")
+        cell.layer.cornerRadius = 5
 
         return cell
     }

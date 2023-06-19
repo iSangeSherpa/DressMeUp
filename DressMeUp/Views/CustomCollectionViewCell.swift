@@ -8,17 +8,20 @@ class CustomCollectionViewCell: UICollectionViewCell {
     var imageView: UIImageView = {
         var imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 5
         imageView.image = UIImage(systemName: "i.circle")
         return imageView
     }()
     
+    // MARK: Main Calling Method
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
     }
     
     private func setupUI() {
-        backgroundColor = .red
+        backgroundColor = .none
         
         addSubview(imageView)
         
@@ -27,12 +30,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    
-    @objc private func cellTapped() {
-        
     }
 }

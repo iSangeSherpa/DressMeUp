@@ -7,6 +7,8 @@ class PhotoExpandedViewController: UIViewController {
     var photoImageView: UIImageView = {
        var photoImageView = UIImageView()
         photoImageView.contentMode = .scaleAspectFill
+        photoImageView.clipsToBounds = true
+        photoImageView.layer.cornerRadius = 5
         photoImageView.image = UIImage(systemName: "exclamationmark.circle.fill")
         photoImageView.backgroundColor = .gray
         return photoImageView

@@ -1,7 +1,6 @@
 {
   "images" : [
     {
-      "filename" : "Shawn Mendes rocking the simple shirt and pants look.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -10,6 +9,7 @@
       "scale" : "2x"
     },
     {
+      "filename" : "austin-wade-AoYT0ArTTmg-unsplash.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

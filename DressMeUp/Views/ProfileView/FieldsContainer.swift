@@ -53,7 +53,7 @@ func getFieldContainer(
         make.top.left.equalTo(stackContainer).offset(20)
     }
     stackContainer.snp.makeConstraints { make in
-        make.height.equalTo(100)
+        make.height.equalTo(80)
     }
     
     return stackContainer
